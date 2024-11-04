@@ -17,12 +17,18 @@ importers:
       '@vueuse/head':
         specifier: ^2.0.0
         version: 2.0.0(vue@3.5.12(typescript@5.6.3))
+      axios:
+        specifier: ^1.7.7
+        version: 1.7.7
       nprogress:
         specifier: ^0.2.0
         version: 0.2.0
       pinia:
         specifier: ^2.2.5
         version: 2.2.5(typescript@5.6.3)(vue@3.5.12(typescript@5.6.3))
+      simple-abortable-promise:
+        specifier: ^1.1.1
+        version: 1.1.1
       vue:
         specifier: ^3.5.12
         version: 3.5.12(typescript@5.6.3)
@@ -2108,6 +2114,9 @@ packages:
   abbrev@2.0.0:
     resolution: {integrity: sha512-6/mh1E2u2YgEsCHdY0Yx5oW+61gZU+1vXaoiHHrpKeuRNNgFvS+/jrwHiQhB5apAf5oB7UB7E19ol2R2LKH8hQ==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
+
+  abortcontroller-polyfill@1.7.5:
+    resolution: {integrity: sha512-JMJ5soJWP18htbbxJjG7bG6yuI6pRhgJ0scHHTfkUjf6wjP912xZWvM+A4sJK3gqd9E8fcPbDnOefbA9Th/FIQ==}
 
   accepts@1.3.8:
     resolution: {integrity: sha512-PYAthTa2m2VKxuvSD3DPC/Gy+U+sOA1LAuT8mkmRuvw+NACSaeXEQ+NHcVF7rONl6qcaxV3Uuemwawk+7+SJLw==}
@@ -4779,6 +4788,9 @@ packages:
   signal-exit@4.1.0:
     resolution: {integrity: sha512-bzyZ1e88w9O1iNJbKnOlvYTrWPDl46O1bG0D3XInv+9tkPrxrN8jUUTiFlDkkmKWgn1M6CfIA13SuGqOa9Korw==}
     engines: {node: '>=14'}
+
+  simple-abortable-promise@1.1.1:
+    resolution: {integrity: sha512-ekE07nRUPZbwSOYdHdmvV4eZBY6NAKvYv469zD1zDr4EXK7KL+FYhg2eg8UpN8Xe41lW091zJy9teo/G6oeTyw==}
 
   simple-git-hooks@2.11.1:
     resolution: {integrity: sha512-tgqwPUMDcNDhuf1Xf6KTUsyeqGdgKMhzaH4PAZZuzguOgTl5uuyeYe/8mWgAr6IBxB5V06uqEf6Dy37gIWDtDg==}
@@ -7992,6 +8004,8 @@ snapshots:
 
   abbrev@2.0.0: {}
 
+  abortcontroller-polyfill@1.7.5: {}
+
   accepts@1.3.8:
     dependencies:
       mime-types: 2.1.35
@@ -10984,6 +10998,10 @@ snapshots:
   signal-exit@3.0.7: {}
 
   signal-exit@4.1.0: {}
+
+  simple-abortable-promise@1.1.1:
+    dependencies:
+      abortcontroller-polyfill: 1.7.5
 
   simple-git-hooks@2.11.1: {}
 
