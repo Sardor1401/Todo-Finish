@@ -8,6 +8,7 @@ export interface RegisterPayload {
   last_name: string
   password: string
 }
+export type LoginPayload = Omit<RegisterPayload, "first_name" | "last_name">
 
 class AuthService {
   url: string
@@ -19,8 +20,8 @@ class AuthService {
     return httpClient.post(REGISTER, {}, { params: payload })
   }
 
-  login(): AbortablePromise<any> {
-    return httpClient.head(LOGIN)
+  login(payload: LoginPayload): AbortablePromise<any> {
+    return httpClient.post(LOGIN, payload)
   }
 }
 
