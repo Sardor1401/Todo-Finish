@@ -1,11 +1,17 @@
 <script setup lang="ts">
+  import { EyeIcon } from "@heroicons/vue/24/solid"
   import type { LoginPayload } from "@/service/auth-service"
   import AuthService from "@/service/auth-service"
 
+  const isPasswordShown = ref<boolean>(false)
   const payload = reactive<LoginPayload>({
     username: "",
     password: "",
   })
+
+  function toggleEye() {
+    isPasswordShown.value = !isPasswordShown.value
+  }
 
   async function onSubmit() {
     try {
@@ -32,9 +38,15 @@
             <label for="username" class="sr-only">Username</label>
             <input id="username" v-model="payload.username" placeholder="username" name="username" type="text" autocomplete="username" required class="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
           </div>
+
           <div>
             <label for="password" class="sr-only">Password</label>
-            <input id="password" v-model="payload.password" name="password" type="password" autocomplete="current-password" required class="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" placeholder="Password">
+            <div class="relative">
+              <button class="absolute right-4 bottom-2 z-20" type="button" @click="toggleEye()">
+                <EyeIcon class="size-5" />
+              </button>
+              <input id="password" v-model="payload.password" name="password" :type="isPasswordShown ? 'text' : 'password'" autocomplete="current-password" required class="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" placeholder="Password">
+            </div>
           </div>
         </div>
 

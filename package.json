@@ -17,6 +17,7 @@
     "sizecheck": "npx vite-bundle-visualizer"
   },
   "dependencies": {
+    "@heroicons/vue": "^2.1.5",
     "@unhead/vue": "^1.11.10",
     "@vueuse/core": "^10.11.1",
     "@vueuse/head": "^2.0.0",
