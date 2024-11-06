@@ -17,11 +17,14 @@
     "sizecheck": "npx vite-bundle-visualizer"
   },
   "dependencies": {
+    "@heroicons/vue": "^2.1.5",
     "@unhead/vue": "^1.11.10",
     "@vueuse/core": "^10.11.1",
     "@vueuse/head": "^2.0.0",
+    "axios": "^1.7.7",
     "nprogress": "^0.2.0",
     "pinia": "^2.2.5",
+    "simple-abortable-promise": "^1.1.1",
     "vue": "^3.5.12",
     "vue-demi": "^0.14.10",
     "vue-i18n": "^9.14.1",

@@ -7,15 +7,18 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    AddTodo: typeof import('./components/AddTodo.vue')['default']
     FesDrag: typeof import('./components/FesDrag.vue')['default']
     FesDrop: typeof import('./components/FesDrop.vue')['default']
     FesPanel: typeof import('./components/FesPanel.vue')['default']
     README: typeof import('./components/README.md')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SignIn: typeof import('./components/SignIn.vue')['default']
     SignUp: typeof import('./components/SignUp.vue')['default']
     TheCounter: typeof import('./components/TheCounter.vue')['default']
     TheFooter: typeof import('./components/TheFooter.vue')['default']
     TheInput: typeof import('./components/TheInput.vue')['default']
+    TodoTable: typeof import('./components/TodoTable.vue')['default']
   }
 }
