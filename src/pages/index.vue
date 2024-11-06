@@ -3,6 +3,8 @@
   import type { LoginPayload } from "@/service/auth-service"
   import AuthService from "@/service/auth-service"
 
+  const router = useRouter()
+
   const isPasswordShown = ref<boolean>(false)
   const payload = reactive<LoginPayload>({
     username: "",
@@ -16,6 +18,7 @@
   async function onSubmit() {
     try {
       await AuthService.login(payload)
+      router.push("/todos")
     }
     catch (error: any) {
       console.error(error)
