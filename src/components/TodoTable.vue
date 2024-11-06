@@ -1,7 +1,6 @@
 <script setup>
   const players = [
     { name: "Lindsay Walton", title: "Front-end Developer", email: "lindsay.walton@example.com", role: "Member" },
-  // More people...
   ]
 </script>
 
