@@ -1,0 +1,3 @@
+<template>
+  <AddTodo />
+</template>
