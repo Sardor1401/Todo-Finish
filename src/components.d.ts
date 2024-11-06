@@ -10,6 +10,7 @@ declare module 'vue' {
     AddTodo: typeof import('./components/AddTodo.vue')['default']
     FesDrag: typeof import('./components/FesDrag.vue')['default']
     FesDrop: typeof import('./components/FesDrop.vue')['default']
+    FesModal: typeof import('./components/FesModal.vue')['default']
     FesPanel: typeof import('./components/FesPanel.vue')['default']
     README: typeof import('./components/README.md')['default']
     RouterLink: typeof import('vue-router')['RouterLink']

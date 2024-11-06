@@ -1,7 +1,8 @@
-<script setup>
+<script setup lang="ts">
   const players = [
-    { name: "Lindsay Walton", title: "Front-end Developer", email: "lindsay.walton@example.com", role: "Member" },
+    { id: 1, name: "Lindsay Walton", title: "Front-end Developer", email: "lindsay.walton@example.com", role: "Member" },
   ]
+  const shown = ref<boolean>(false)
 </script>
 
 <template>
@@ -16,7 +17,7 @@
         </p>
       </div>
       <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
-        <button type="button" class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">
+        <button type="button" class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto" @click="shown = true">
           Add todo
         </button>
       </div>
@@ -59,4 +60,13 @@
       </div>
     </div>
   </div>
+
+  <FesModal
+    v-model="shown"
+  >
+    <div class="w-[44rem]">
+      <AddTodo />
+    </div>
+    <template #actions />
+  </FesModal>
 </template>
