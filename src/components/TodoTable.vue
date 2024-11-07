@@ -1,8 +1,21 @@
 <script setup lang="ts">
-  const players = [
-    { id: 1, name: "Lindsay Walton", title: "Front-end Developer", email: "lindsay.walton@example.com", role: "Member" },
-  ]
+  import type { Todo } from "@/models/todo"
+  import todosService from "@/service/private/todos-service"
+
+  const todos = ref<Todo[]>([])
   const shown = ref<boolean>(false)
+
+  async function getTodos() {
+    try {
+      const { data } = await todosService.getTodos()
+      todos.value = data
+    }
+    catch (error: any) {
+      console.error(error)
+    }
+  }
+
+  onMounted(getTodos)
 </script>
 
 <template>
@@ -41,16 +54,16 @@
                 </tr>
               </thead>
               <tbody class="divide-y divide-gray-200 bg-white">
-                <tr v-for="player in players" :key="player.id">
+                <tr v-for="todo in todos" :key="todo.id">
                   <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                    {{ player.name }}
+                    <h1>{{ todo.title }}</h1>
                   </td>
                   <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                    {{ player.title }}
+                    <h1>{{ todo.description }}</h1>
                   </td>
-                  <td class="relative whitespace-nowrap py-4  pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                    <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, {{ player.name }}</span></a> &nbsp;
-                    <a href="#" class="text-red-600   hover:text-red-900">Delete <span class="sr-only">, {{ player.name }}</span></a>
+                  <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+                    <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                    <a href="#" class="text-red-600 ml-2 hover:text-red-900">Delete</a>
                   </td>
                 </tr>
               </tbody>

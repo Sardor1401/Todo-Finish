@@ -1,7 +1,8 @@
 <script setup lang="ts">
   import { EyeIcon } from "@heroicons/vue/24/solid"
-  import type { LoginPayload } from "@/service/auth-service"
-  import AuthService from "@/service/auth-service"
+  import type { LoginPayload } from "@/service/public/auth-service"
+  import AuthService from "@/service/public/auth-service"
+  import httpClient from "@/service/private/http-client"
 
   const router = useRouter()
 
@@ -17,7 +18,9 @@
 
   async function onSubmit() {
     try {
-      await AuthService.login(payload)
+      const { data } = await AuthService.login(payload)
+      const { access_token } = data
+      httpClient.setTokens(access_token, "")
       router.push("/todos")
     }
     catch (error: any) {

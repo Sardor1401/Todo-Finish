@@ -1,6 +1,6 @@
 <script setup lang="ts">
-  import type { RegisterPayload } from "@/service/auth-service"
-  import AuthService from "@/service/auth-service"
+  import type { RegisterPayload } from "@/service/public/auth-service"
+  import AuthService from "@/service/public/auth-service"
 
   const payload = reactive<RegisterPayload>({
     username: "",

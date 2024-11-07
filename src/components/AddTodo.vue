@@ -1,5 +1,21 @@
-<script setup>
+<script setup lang="ts">
+  import type { TodosPayload } from "@/service/private/todos-service"
+  import TodosService from "@/service/private/todos-service"
 
+  const payload = reactive<TodosPayload>({
+    title: "",
+    description: "",
+    done: false,
+  })
+
+  async function onSubmit() {
+    try {
+      await TodosService.createTodo(payload)
+    }
+    catch (error: any) {
+      console.error(error)
+    }
+  }
 </script>
 
 <template>
@@ -12,23 +28,23 @@
 
     <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
       <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-        <form class="space-y-6" action="#" method="POST">
+        <form class="space-y-6" action="#" method="POST" @submit.prevent="onSubmit">
           <div>
             <label for="title" class="block text-sm font-medium text-gray-700">Football player</label>
             <div class="mt-1">
-              <input id="title" name="title" placeholder="player name" type="text" autocomplete="" required="" class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+              <input id="title" v-model="payload.title" name="title" placeholder="player name" type="text" autocomplete="" required class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
             </div>
           </div>
 
           <div>
             <label for="description" class="block text-sm font-medium text-gray-700">Player country</label>
             <div class="mt-1">
-              <input id="description" placeholder="player country" name="description" type="text" autocomplete="" required="" class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+              <input id="description" v-model="payload.description" placeholder="player country" name="description" type="text" autocomplete="" required class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
             </div>
           </div>
 
           <div class="flex items-center">
-            <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+            <input id="remember-me" v-model="payload.done" name="remember-me" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
             <label for="remember-me" class="ml-2 block text-sm text-gray-900">Submit</label>
           </div>
 

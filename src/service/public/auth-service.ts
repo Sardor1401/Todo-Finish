@@ -1,6 +1,6 @@
 import type { AbortablePromise } from "simple-abortable-promise"
-import httpClient from "@/service/http-client"
-import { LOGIN, REGISTER } from "@/service/endpoints"
+import httpClient from "@/service/public/http-client"
+import { LOGIN, REGISTER } from "@/service/public/endpoints"
 
 export interface RegisterPayload {
   username: string
