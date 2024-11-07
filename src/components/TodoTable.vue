@@ -5,6 +5,10 @@
   const todos = ref<Todo[]>([])
   const shown = ref<boolean>(false)
 
+  function close() {
+    shown.value = false
+  }
+
   async function getTodos() {
     try {
       const { data } = await todosService.getTodos()
@@ -78,7 +82,7 @@
     v-model="shown"
   >
     <div class="w-[44rem]">
-      <AddTodo />
+      <AddTodo @submit="close" />
     </div>
     <template #actions />
   </FesModal>

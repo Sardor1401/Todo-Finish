@@ -6,7 +6,6 @@ const baseURL = import.meta.env.VITE_API_BASE_URL
 
 class HttpClient {
   private client: AxiosInstance
-  private accessToken: string | null = null
   private refreshToken: string | null = null
 
   constructor() {
@@ -30,23 +29,22 @@ class HttpClient {
   }
 
   // Access va refresh tokenlarini o'rnatish uchun metod
-  setTokens(accessToken: string, refreshToken: string) {
-    this.accessToken = accessToken
-    this.refreshToken = refreshToken
+  setTokens(accessToken: string) {
+    localStorage.setItem("token", accessToken)
   }
 
   // Tokenlarni tozalash uchun metod (masalan, chiqishda)
   clearTokens() {
-    this.accessToken = null
     this.refreshToken = null
   }
 
   // Agar mavjud bo'lsa, headerga access token qo'shadi
   private setAuthHeader = (config: AxiosRequestConfig) => {
-    if (this.accessToken) {
+    const accessToken = localStorage.getItem("token")
+    if (accessToken) {
       config.headers = {
         ...config.headers,
-        Authorization: `Bearer ${this.accessToken}`,
+        Authorization: `Bearer ${accessToken}`,
       }
     }
     return config
@@ -60,7 +58,6 @@ class HttpClient {
       try {
         const response = await this.refreshAccessToken()
         if (response) {
-          this.accessToken = response.accessToken
           return this.client(originalRequest) // Yangi access token bilan so'rovni qayta yuboradi
         }
       }

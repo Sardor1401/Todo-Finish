@@ -2,6 +2,10 @@
   import type { TodosPayload } from "@/service/private/todos-service"
   import TodosService from "@/service/private/todos-service"
 
+  const emits = defineEmits<{
+    (e: "submit"): void
+  }>()
+
   const payload = reactive<TodosPayload>({
     title: "",
     description: "",
@@ -11,6 +15,7 @@
   async function onSubmit() {
     try {
       await TodosService.createTodo(payload)
+      emits("submit")
     }
     catch (error: any) {
       console.error(error)
