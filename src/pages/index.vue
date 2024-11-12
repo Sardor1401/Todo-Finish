@@ -20,7 +20,7 @@
     try {
       const { data } = await AuthService.login(payload)
       const { access_token } = data
-      httpClient.setTokens(access_token, "")
+      httpClient.setTokens(access_token)
       router.push("/todos")
     }
     catch (error: any) {
