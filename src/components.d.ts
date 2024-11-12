@@ -21,5 +21,7 @@ declare module 'vue' {
     TheFooter: typeof import('./components/TheFooter.vue')['default']
     TheInput: typeof import('./components/TheInput.vue')['default']
     TodoTable: typeof import('./components/TodoTable.vue')['default']
+    TodoTableItem: typeof import('./components/TodoTableItem.vue')['default']
+    TodoUpdate: typeof import('./components/TodoUpdate.vue')['default']
   }
 }

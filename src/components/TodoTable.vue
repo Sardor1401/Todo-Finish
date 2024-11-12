@@ -19,6 +19,10 @@
     }
   }
 
+  function onDelete(id: string) {
+    todos.value = todos.value.filter(todo => todo.id !== id)
+  }
+
   onMounted(getTodos)
 </script>
 
@@ -58,18 +62,7 @@
                 </tr>
               </thead>
               <tbody class="divide-y divide-gray-200 bg-white">
-                <tr v-for="todo in todos" :key="todo.id">
-                  <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                    <h1>{{ todo.title }}</h1>
-                  </td>
-                  <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                    <h1>{{ todo.description }}</h1>
-                  </td>
-                  <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                    <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                    <a href="#" class="text-red-600 ml-2 hover:text-red-900">Delete</a>
-                  </td>
-                </tr>
+                <TodoTableItem v-for="todo in todos" :key="todo.id" :todo="todo" @delete="onDelete(todo.id)" />
               </tbody>
             </table>
           </div>
@@ -82,7 +75,9 @@
     v-model="shown"
   >
     <div class="w-[44rem]">
-      <AddTodo @submit="close" />
+      <AddTodo
+        @submit="close"
+      />
     </div>
     <template #actions />
   </FesModal>

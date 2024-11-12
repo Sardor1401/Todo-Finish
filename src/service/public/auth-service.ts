@@ -17,11 +17,15 @@ class AuthService {
   }
 
   register(payload: RegisterPayload): AbortablePromise<any> {
-    return httpClient.post(REGISTER, {}, { params: payload })
+    return httpClient.post(REGISTER, payload)
   }
 
   login(payload: LoginPayload): AbortablePromise<any> {
-    return httpClient.post(LOGIN, payload)
+    return httpClient.post(LOGIN, payload, {
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+    })
   }
 }
 
