@@ -29,8 +29,9 @@ class HttpClient {
   }
 
   // Access va refresh tokenlarini o'rnatish uchun metod
-  setTokens(accessToken: string) {
+  setTokens(accessToken: string, refreshToken: string) {
     localStorage.setItem("token", accessToken)
+    localStorage.setItem("refreshToken", refreshToken)
   }
 
   // Tokenlarni tozalash uchun metod (masalan, chiqishda)

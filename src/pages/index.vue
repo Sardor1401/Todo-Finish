@@ -19,8 +19,8 @@
   async function onSubmit() {
     try {
       const { data } = await AuthService.login(payload)
-      const { access_token } = data
-      httpClient.setTokens(access_token)
+      const { access_token, refresh_token } = data
+      httpClient.setTokens(access_token, refresh_token)
       router.push("/todos")
     }
     catch (error: any) {
