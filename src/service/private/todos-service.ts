@@ -16,6 +16,7 @@ class TodosService {
   }
 
   createTodo(payload: TodosPayload): AbortablePromise<any> {
+    payload.done = payload.done ?? true
     return httpClient.post(ADDTODO, payload)
   }
 
@@ -27,8 +28,9 @@ class TodosService {
     return httpClient.delete(`${TODOS}${id}`)
   }
 
-  updateTodo(id: string, updatedTodo: Todo): AbortablePromise<any> {
-    return httpClient.patch(`${TODOS}${id}`, updatedTodo)
+  updateTodo(id: string, payload: Todo): AbortablePromise<any> {
+    payload.done = payload.done ?? true
+    return httpClient.patch(`${TODOS}${id}`, payload)
   }
 }
 

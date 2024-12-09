@@ -26,6 +26,7 @@
     "nprogress": "^0.2.0",
     "pinia": "^2.2.5",
     "simple-abortable-promise": "^1.1.1",
+    "vee-validate": "^4.14.7",
     "vue": "^3.5.12",
     "vue-demi": "^0.14.10",
     "vue-i18n": "^9.14.1",
@@ -76,7 +77,8 @@
     "vite-ssg": "^0.23.8",
     "vite-ssg-sitemap": "^0.6.1",
     "vitest": "^1.6.0",
-    "vue-tsc": "^2.1.8"
+    "vue-tsc": "^2.1.8",
+    "yup": "^1.5.0"
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged"

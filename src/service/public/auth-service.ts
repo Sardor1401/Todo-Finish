@@ -8,7 +8,7 @@ export interface RegisterPayload {
   last_name: string
   password: string
 }
-export type LoginPayload = Omit<RegisterPayload, "first_name" | "last_name">
+export type LoginPayload = Pick<RegisterPayload, "username" | "password">
 
 class AuthService {
   url: string
