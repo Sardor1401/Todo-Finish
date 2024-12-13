@@ -26,6 +26,7 @@
       }
       await TodosService.createTodo(payload)
       emits("submit")
+      location.reload()
     }
     catch (error: any) {
       console.error(error)
