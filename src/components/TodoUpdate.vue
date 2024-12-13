@@ -37,6 +37,7 @@
         todos.value[index] = data
       }
       emits("submit")
+      location.reload()
     }
 
     catch (error) {

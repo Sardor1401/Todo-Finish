@@ -2,6 +2,9 @@
   import { ErrorMessage, Field, Form, useForm } from "vee-validate"
   import * as yup from "yup"
   import AuthService from "@/service/public/auth-service"
+  import { INDEX } from "@/service/public/endpoints"
+
+  const router = useRouter()
 
   const schema = yup.object().shape({
     username: yup.string().required("username is required"),
@@ -22,6 +25,7 @@
         last_name: values.last_name,
         password: values.password,
       }
+      router.push(INDEX)
       await AuthService.register(payload)
     }
     catch (error: any) {
