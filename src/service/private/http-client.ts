@@ -18,28 +18,23 @@ class HttpClient {
       },
     })
 
-    // So'rovga autentifikatsiya tokenini qo'shadigan interceptor
     this.client.interceptors.request.use(this.setAuthHeader)
 
-    // Javobda xatolik bo'lsa, tokenni yangilaydigan interceptor
     this.client.interceptors.response.use(
       response => response,
       this.handleResponseError,
     )
   }
 
-  // Access va refresh tokenlarini o'rnatish uchun metod
   setTokens(accessToken: string, refreshToken: string) {
     localStorage.setItem("token", accessToken)
     localStorage.setItem("refreshToken", refreshToken)
   }
 
-  // Tokenlarni tozalash uchun metod (masalan, chiqishda)
   clearTokens() {
     this.refreshToken = null
   }
 
-  // Agar mavjud bo'lsa, headerga access token qo'shadi
   private setAuthHeader = (config: AxiosRequestConfig) => {
     const accessToken = localStorage.getItem("token")
     if (accessToken) {
@@ -51,7 +46,6 @@ class HttpClient {
     return config
   }
 
-  // 401 xatolarni tokenni yangilash orqali qayta ishlaydi
   private handleResponseError = async (error: any) => {
     const originalRequest = error.config
     if (error.response?.status === 401 && this.refreshToken && !originalRequest._retry) {
@@ -59,26 +53,24 @@ class HttpClient {
       try {
         const response = await this.refreshAccessToken()
         if (response) {
-          return this.client(originalRequest) // Yangi access token bilan so'rovni qayta yuboradi
+          return this.client(originalRequest)
         }
       }
       catch (err) {
         this.clearTokens()
-        throw err // Bu yerda logout yoki boshqa usullarni qo'shishingiz mumkin
+        throw err
       }
     }
     return Promise.reject(error)
   }
 
-  // Refresh token orqali access tokenni yangilaydi
   private async refreshAccessToken() {
     const response = await axios.post(`${baseURL}auth/token/refresh`, {
       refreshToken: this.refreshToken,
     })
-    return response.data // Javob tarkibida { accessToken, refreshToken } mavjud deb qabul qilamiz
+    return response.data
   }
 
-  // HTTP metodlar: AbortablePromise bilan
   post(url: string, data?: any, config?: any): AbortablePromise<any> {
     return new AbortablePromise<any>((resolve, reject, abortSignal) => {
       this.client.post(url, data, { signal: abortSignal, ...config })
@@ -126,7 +118,6 @@ class HttpClient {
         .catch(err => reject(err))
     })
   }
-  // Boshqa metodlarni ham xuddi shu tarzda AbortablePromise bilan qo'shing...
 }
 
 export default new HttpClient()
