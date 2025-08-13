@@ -19,7 +19,6 @@ class HttpClient {
     })
 
     this.client.interceptors.request.use(this.setAuthHeader)
-
     this.client.interceptors.response.use(
       response => response,
       this.handleResponseError,
