@@ -27,7 +27,7 @@
     "pinia": "^2.3.1",
     "simple-abortable-promise": "^1.1.1",
     "vee-validate": "^4.15.1",
-    "vue": "^3.5.21",
+    "vue": "^3.5.22",
     "vue-demi": "^0.14.10",
     "vue-i18n": "^9.14.5",
     "vue-router": "^4.5.1"
