@@ -22,7 +22,7 @@
     "@unhead/vue": "^1.11.20",
     "@vueuse/core": "^10.11.1",
     "@vueuse/head": "^2.0.0",
-    "axios": "^1.12.2",
+    "axios": "^1.13.1",
     "nprogress": "^0.2.0",
     "pinia": "^2.3.1",
     "simple-abortable-promise": "^1.1.1",
