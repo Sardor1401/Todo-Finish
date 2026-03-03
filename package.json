@@ -30,7 +30,7 @@
   "devDependencies": {
     "@antfu/eslint-config": "^2.27.3",
     "@egoist/tailwindcss-icons": "^1.9.2",
-    "@iconify-json/carbon": "^1.2.18",
+    "@iconify-json/carbon": "^1.2.19",
     "@intlify/unplugin-vue-i18n": "^3.0.1",
     "@shikijs/markdown-it": "^1.29.2",
     "@types/markdown-it-link-attributes": "^3.0.5",
@@ -50,7 +50,7 @@
     "lint-staged": "^15.5.2",
     "markdown-it-link-attributes": "^4.0.1",
     "pnpm": "^8.15.9",
-    "postcss": "^8.5.6",
+    "postcss": "^8.5.8",
     "rollup": "^4.59.0",
     "shiki": "^1.29.2",
     "simple-git-hooks": "^2.13.1",
